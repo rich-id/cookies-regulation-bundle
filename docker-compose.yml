@@ -1,8 +1,8 @@
 version: '3.7'
 services:
     application:
-        container_name: template-bundle_app
-        image: richcongress/php:7.3
+        container_name: cookies-regulation-bundle_app
+        image: richcongress/php:8.0
         volumes:
             - .:/app:rw,cached
             - ~/.composer:/home/application/.composer:cached

@@ -1,6 +1,6 @@
 {
-    "name": "rich-id/template-bundle",
-    "description": "A magic bundle",
+    "name": "rich-id/cookies-regulation-bundle",
+    "description": "A bundle to easily manage your trackers and the consentement of your users to fit the RGPD standard",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
@@ -11,9 +11,9 @@
     ],
     "support": {
         "email": "contact@rich-id.com",
-        "source": "https://github.com/rich-id/template-bundle",
-        "docs": "https://github.com/rich-id/template-bundle/blob/master/README.md",
-        "issues": "https://github.com/rich-id/template-bundle/issues"
+        "source": "https://github.com/rich-id/cookies-regulation-bundle",
+        "docs": "https://github.com/rich-id/cookies-regulation-bundle/blob/master/README.md",
+        "issues": "https://github.com/rich-id/cookies-regulation-bundle/issues"
     },
     "require": {
         "php": ">=7.3",
@@ -27,16 +27,15 @@
     },
     "autoload": {
         "psr-4": {
-            "RichId\\TemplateBundle\\": "src/"
+            "RichId\\CookiesRegulationBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RichId\\TemplateBundle\\Tests\\": "tests/"
+            "RichId\\CookiesRegulationBundle\\Tests\\": "tests/"
         }
     },
     "config": {
-        "bin-dir": "bin",
         "discard-changes": true,
         "sort-packages": true
     },
@@ -51,11 +50,11 @@
     "extra": {
         "hooks": {
             "pre-commit": [
-                "./bin/php-cs-fixer fix"
+                "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix"
             ],
             "pre-push": [
-                "./bin/php-cs-fixer fix --dry-run",
-                "./bin/static_analysis"
+                "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run",
+                "./vendor/richcongress/static-analysis/bin/static_analysis"
             ]
         }
     }

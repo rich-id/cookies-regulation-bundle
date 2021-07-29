@@ -1,25 +1,25 @@
 <?php declare(strict_types=1);
 
-namespace RichId\TemplateBundle\tests;
+namespace RichId\CookiesRegulationBundle\tests;
 
 use RichCongress\TestTools\TestCase\TestCase;
-use RichId\TemplateBundle\RichIdTemplateBundle;
+use RichId\CookiesRegulationBundle\RichIdCookiesRegulationBundle;
 
 /**
  * Class DummyTest
  *
- * @package   RichId\TemplateBundle\Tests
+ * @package   RichId\CookiesRegulationBundle\Tests
  * @author    Nicolas Guilloux <nguilloux@rich-id.com>
  * @copyright 2014 - 2020 RichId (https://www.rich-id.com)
  *
- * @covers \RichId\TemplateBundle\RichIdTemplateBundle
+ * @covers \RichId\CookiesRegulationBundle\RichIdCookiesRegulationBundle
  */
 class DummyTest extends TestCase
 {
     public function testInstanciateBundle(): void
     {
-        $bundle = new RichIdTemplateBundle();
+        $bundle = new RichIdCookiesRegulationBundle();
 
-        self::assertInstanceOf(RichIdTemplateBundle::class, $bundle);
+        self::assertInstanceOf(RichIdCookiesRegulationBundle::class, $bundle);
     }
 }
