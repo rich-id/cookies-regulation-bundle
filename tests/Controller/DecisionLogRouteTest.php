@@ -1,7 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace RichId\CookiesRegulationBundle\Tests\Controller;
 
+use Doctrine\Persistence\ObjectRepository;
 use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
 use RichCongress\TestSuite\TestCase\ControllerTestCase;
 use RichId\CookiesRegulationBundle\Entity\DecisionLog;
@@ -10,26 +13,30 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * @covers \RichId\CookiesRegulationBundle\Controller\DecisionLogRoute
  * @covers \RichId\CookiesRegulationBundle\Entity\DecisionLog
+ * @covers \RichId\CookiesRegulationBundle\Factory\CookieDecisionMetadataFactory
+ * @covers \RichId\CookiesRegulationBundle\Factory\CookieDecisionsFactory
  */
+#[TestConfig('container')]
 final class DecisionLogRouteTest extends ControllerTestCase
 {
-    #[TestConfig('container')]
     public function testDecisionLog(): void
     {
         $response = $this->getClient()->post('/rest/cookies-regulation/log', [], [
-            'preferences' =>  [
+            'preferences' => [
                 ['google_tag_manager', true],
                 ['another_cookie', false],
             ],
             'metadata' => [
                 'uuid' => '13336e1c-1c5c-4d24-8229-6eabb98f90bd',
-                'date' => '03/11/2020, 17:55:47'
-            ]
+                'date' => '03/11/2020, 17:55:47',
+            ],
         ]);
 
         self::assertStatusCode(Response::HTTP_NO_CONTENT, $response);
 
-        $logs = $this->getRepository(DecisionLog::class)->findAll();
+        /** @var ObjectRepository<DecisionLog> $repository */
+        $repository = $this->getRepository(DecisionLog::class);
+        $logs = $repository->findAll();
         self::assertCount(2, $logs);
 
         self::assertNotNull($logs[0]->getId());
@@ -43,5 +50,78 @@ final class DecisionLogRouteTest extends ControllerTestCase
         self::assertFalse($logs[1]->isEnabled());
         self::assertSame('13336e1c-1c5c-4d24-8229-6eabb98f90bd', $logs[1]->getUuid());
         self::assertSame('2020-11-03 17:55:47', $logs[1]->getDate()->format('Y-m-d H:i:s'));
+    }
+
+    public function testDecisionLogPreferencesNotArray(): void
+    {
+        $response = $this->getClient()->post('/rest/cookies-regulation/log', [], [
+            'preferences' => 'BadData',
+            'metadata'    => [
+                'uuid' => '13336e1c-1c5c-4d24-8229-6eabb98f90bd',
+                'date' => '03/11/2020, 17:55:47',
+            ],
+        ]);
+
+        self::assertStatusCode(Response::HTTP_BAD_REQUEST, $response);
+    }
+
+    public function testDecisionLogPreferencesWithBadDataInside(): void
+    {
+        $response = $this->getClient()->post('/rest/cookies-regulation/log', [], [
+            'preferences' => [
+                ['', true],
+            ],
+            'metadata' => [
+                'uuid' => '13336e1c-1c5c-4d24-8229-6eabb98f90bd',
+                'date' => '03/11/2020, 17:55:47',
+            ],
+        ]);
+
+        self::assertStatusCode(Response::HTTP_BAD_REQUEST, $response);
+    }
+
+    public function testDecisionLogMetadataNotAnArray(): void
+    {
+        $response = $this->getClient()->post('/rest/cookies-regulation/log', [], [
+            'preferences' => [
+                ['google_tag_manager', true],
+                ['another_cookie', false],
+            ],
+            'metadata' => 123456,
+        ]);
+
+        self::assertStatusCode(Response::HTTP_BAD_REQUEST, $response);
+    }
+
+    public function testDecisionLogMetadataBadUuid(): void
+    {
+        $response = $this->getClient()->post('/rest/cookies-regulation/log', [], [
+            'preferences' => [
+                ['google_tag_manager', true],
+                ['another_cookie', false],
+            ],
+            'metadata' => [
+                'uuid' => false,
+                'date' => '03/11/2020, 17:55:47',
+            ],
+        ]);
+
+        self::assertStatusCode(Response::HTTP_BAD_REQUEST, $response);
+    }
+
+    public function testDecisionLogMetadataBadDate(): void
+    {
+        $response = $this->getClient()->post('/rest/cookies-regulation/log', [], [
+            'preferences' => [
+                ['google_tag_manager', true],
+                ['another_cookie', false],
+            ],
+            'metadata' => [
+                'uuid' => '13336e1c-1c5c-4d24-8229-6eabb98f90bd',
+                'date' => false,
+            ],
+        ]);
+
+        self::assertStatusCode(Response::HTTP_BAD_REQUEST, $response);
     }
 }

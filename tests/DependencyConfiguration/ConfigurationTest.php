@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace RichId\CookiesRegulationBundle\Tests\DependencyConfiguration;
 
@@ -24,6 +26,7 @@ class ConfigurationTest extends TestCase
     #[TestConfig('container')]
     public function testInstantiationContainer(): void
     {
+        /** @var ParameterBagInterface $parameterBag */
         $parameterBag = $this->getService(ParameterBagInterface::class);
         $config = $parameterBag->get(Configuration::CONFIG_NODE);
 
@@ -37,12 +40,12 @@ class ConfigurationTest extends TestCase
                     'label'              => 'Privacy Policy',
                     'open_in_new_window' => true,
                 ],
-                'modal'              => [
+                'modal' => [
                     'header'                               => 'Modal header',
                     'related_companies_count'              => 2,
                     'related_companies_privacy_policy_url' => 'http://related_companies_privacy_policy',
                 ],
-                'services'           => [
+                'services' => [
                     'google_tag_manager' => [
                         'name'                    => 'Google Tag Manager',
                         'description'             => 'Tag management system',

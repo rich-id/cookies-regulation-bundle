@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace RichId\CookiesRegulationBundle\Tests\TwigExtension;
 
@@ -15,6 +17,7 @@ final class CookiesRegulationTwigExtensionTest extends TestCase
 {
     public function testGetFunctions(): void
     {
+        /** @var CookiesRegulationTwigExtension $extension */
         $extension = $this->getService(CookiesRegulationTwigExtension::class);
 
         self::assertContainsOnlyInstancesOf(TwigFunction::class, $extension->getFunctions());
@@ -22,6 +25,7 @@ final class CookiesRegulationTwigExtensionTest extends TestCase
 
     public function testGetConfig(): void
     {
+        /** @var CookiesRegulationTwigExtension $extension */
         $extension = $this->getService(CookiesRegulationTwigExtension::class);
         $config = $extension->getCookiesRegulationConfig();
 
@@ -35,12 +39,12 @@ final class CookiesRegulationTwigExtensionTest extends TestCase
                     'label'              => 'Privacy Policy',
                     'open_in_new_window' => true,
                 ],
-                'modal'              => [
+                'modal' => [
                     'header'                               => 'Modal header',
                     'related_companies_count'              => 2,
                     'related_companies_privacy_policy_url' => 'http://related_companies_privacy_policy',
                 ],
-                'services'           => [
+                'services' => [
                     'google_tag_manager' => [
                         'name'                    => 'Google Tag Manager',
                         'description'             => 'Tag management system',

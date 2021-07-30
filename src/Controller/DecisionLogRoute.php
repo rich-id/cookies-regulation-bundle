@@ -1,45 +1,53 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace RichId\CookiesRegulationBundle\Controller;
 
 use Doctrine\ORM\EntityManagerInterface;
 use RichId\CookiesRegulationBundle\Entity\DecisionLog;
+use RichId\CookiesRegulationBundle\Factory\CookieDecisionMetadataFactory;
+use RichId\CookiesRegulationBundle\Factory\CookieDecisionsFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class DecisionLogRoute extends AbstractController
 {
+    /** @var CookieDecisionMetadataFactory */
+    protected $cookieDecisionMetadataFactory;
+
+    /** @var CookieDecisionsFactory */
+    protected $cookieDecisionsFactory;
+
     /** @var EntityManagerInterface */
     protected $entityManager;
 
-    /** @var RequestStack */
-    protected $requestStack;
-
-    public function __construct(EntityManagerInterface $entityManager, RequestStack $requestStack)
-    {
+    public function __construct(
+        CookieDecisionMetadataFactory $cookieDecisionMetadataFactory,
+        CookieDecisionsFactory $cookieDecisionsFactory,
+        EntityManagerInterface $entityManager
+    ) {
+        $this->cookieDecisionMetadataFactory = $cookieDecisionMetadataFactory;
+        $this->cookieDecisionsFactory = $cookieDecisionsFactory;
         $this->entityManager = $entityManager;
-        $this->requestStack = $requestStack;
     }
 
     public function __invoke(): Response
     {
-        /** @var Request $request */
-        $request = $this->requestStack->getCurrentRequest();
+        $metadata = ($this->cookieDecisionMetadataFactory)();
+        $decisions = ($this->cookieDecisionsFactory)();
 
-        /** @var array<int, string|boolean> $preferences */
-        $preferences = $request->request->get('preferences');
-        $metadata = $request->request->get('metadata');
-        $uuid = $metadata['uuid'];
-        $date = \DateTime::createFromFormat('d/m/Y, H:i:s', $metadata['date']);
+        if ($metadata === null || $decisions === null) {
+            throw new BadRequestHttpException('Fail to parse the data.');
+        }
 
-        foreach ($preferences as $data) {
+        foreach ($decisions as $decision) {
             $log = new DecisionLog();
-            $log->setUuid($uuid);
-            $log->setDate($date);
-            $log->setServiceName($data[0]);
-            $log->setIsEnabled((bool) $data[1]);
+            $log->setUuid($metadata->uuid);
+            $log->setDate($metadata->date);
+            $log->setServiceName($decision->serviceName);
+            $log->setIsEnabled($decision->isEnabled);
             $this->entityManager->persist($log);
         }
 

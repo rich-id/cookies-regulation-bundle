@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace RichId\CookiesRegulationBundle\Migrations;
 
@@ -7,7 +9,7 @@ use Doctrine\Migrations\AbstractMigration;
 
 final class Version20210729153826 extends AbstractMigration
 {
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return 'Add DecisionLog entity';
     }

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace RichId\CookiesRegulationBundle\TwigExtension;
 
@@ -17,9 +19,7 @@ class CookiesRegulationTwigExtension extends AbstractExtension
         $this->parameterBag = $parameterBag;
     }
 
-    /**
-     * @return TwigFunction[]
-     */
+    /** @return TwigFunction[] */
     public function getFunctions(): array
     {
         return [
@@ -27,11 +27,12 @@ class CookiesRegulationTwigExtension extends AbstractExtension
         ];
     }
 
-    /**
-     * @return array<string, mixed>
-     */
+    /** @return array<string, mixed> */
     public function getCookiesRegulationConfig(): array
     {
-        return $this->parameterBag->get(Configuration::CONFIG_NODE);
+        /** @var array<string, mixed> $config */
+        $config = $this->parameterBag->get(Configuration::CONFIG_NODE);
+
+        return $config;
     }
 }

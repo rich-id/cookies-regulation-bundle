@@ -7,6 +7,8 @@
     <services>
         <defaults autowire="true" autoconfigure="true" public="true"/>
         <service id="RichId\CookiesRegulationBundle\Controller\DecisionLogRoute"/>
+        <service id="RichId\CookiesRegulationBundle\Factory\CookieDecisionMetadataFactory"/>
+        <service id="RichId\CookiesRegulationBundle\Factory\CookieDecisionsFactory"/>
         <service id="RichId\CookiesRegulationBundle\TwigExtension\CookiesRegulationTwigExtension"/>
     </services>
 </container>

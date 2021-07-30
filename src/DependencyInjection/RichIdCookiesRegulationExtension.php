@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace RichId\CookiesRegulationBundle\DependencyInjection;
 
@@ -10,7 +12,7 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
- * This is the class that loads and manages your bundle configuration
+ * This is the class that loads and manages your bundle configuration.
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
@@ -18,9 +20,7 @@ class RichIdCookiesRegulationExtension extends AbstractExtension implements Prep
 {
     use DoctrineMigrationsPrependTrait;
 
-    /**
-     * @param array<string, mixed> $configs
-     */
+    /** @param array<string, mixed> $configs */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $this->parseConfiguration(
