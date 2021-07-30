@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace RichId\CookiesRegulationBundle\tests\Resources\Kernel;
+namespace RichId\CookiesRegulationBundle\Tests\Resources\Kernel;
 
 use RichCongress\WebTestBundle\Kernel\DefaultTestKernel;
 
@@ -18,9 +18,6 @@ class TestKernel extends DefaultTestKernel
         parent::__construct('test', false);
     }
 
-    /**
-     * @return string|null
-     */
     public function getConfigurationDir(): ?string
     {
         return __DIR__ . '/config';

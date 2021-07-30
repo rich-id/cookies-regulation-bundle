@@ -1,0 +1,5 @@
+post_cookies_regulation_decision_log:
+    methods: ['POST']
+    path: '/rest/cookies-regulation/log'
+    controller: 'RichId\CookiesRegulationBundle\Controller\DecisionLogRoute'
+

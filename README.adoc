@@ -16,7 +16,7 @@ image:https://github.com/rich-id/cookies-regulation-bundle/workflows/Tests/badge
 image:https://coveralls.io/repos/github/rich-id/cookies-regulation-bundle/badge.svg?branch=master[link="https://coveralls.io/github/rich-id/cookies-regulation-bundle?branch=master",window="_blank"]
 image:https://api.codeclimate.com/v1/badges/cookies-regulation-bundle/maintainability[link="https://codeclimate.com/github/rich-id/cookies-regulation-bundle/maintainability",window="_blank"]
 image:https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat[link="https://github.com/richcongress/test-suite/issues",window="_blank"]
-image:https://img.shields.io/badge/license-MIT-blue.svg[link="LICENSE.md",window="_blank"]
+image:https://img.shields.io/badge/license-MIT-blue.svg[link="LICENSE",window="_blank"]
 image:https://img.shields.io/badge/PHP-7.3%2B-yellow[]
 image:https://img.shields.io/badge/Symfony-4%2B-black[]
 image:https://img.shields.io/badge/Symfony-5%2B-black[]

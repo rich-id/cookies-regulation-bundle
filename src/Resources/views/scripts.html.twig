@@ -1,0 +1,49 @@
+{% set config = getCookiesRegulationConfig() %}
+
+{% if config.enable_auto_import %}
+    <link rel="stylesheet" href="{{ asset('/bundles/richidcookiesregulation/libs/cookies-regulation.css') }}" />
+    <script type="text/javascript" src="{{ asset('/bundles/richidcookiesregulation/libs/cookies-regulation.js') }}"></script>
+{% endif %}
+
+<script>
+    window.CookiesRegulation.init(
+        {
+            website: '{{ config.website }}',
+            locale: '{{ config.locale }}',
+            privacyPolicy: {
+                url: '{{ config.privacy_policy.url }}',
+                label: '{{ config.privacy_policy.label }}',
+                openInNewWindow: {{ config.privacy_policy.open_in_new_window ? 'true' : 'false' }},
+            },
+            modal: {
+                header: '{{ config.modal.header }}',
+                relatedCompaniesCount: {{ config.modal.related_companies_count }},
+                relatedCompaniesPrivacyPolicyUrl: '{{ config.modal.related_companies_privacy_policy_url }}',
+            },
+            decisionLogCallback: (decision) => {
+                const client = new XMLHttpRequest();
+                client.open('POST', '{{ url('post_cookies_regulation_decision_log') }}', true);
+                client.setRequestHeader('Content-type', 'application/json');
+                client.send(JSON.stringify(decision));
+            },
+            services: {
+                {% for serviceName, serviceConfig in config.services %}
+                    {{ serviceName }}: {
+                        name:         '{{ serviceConfig.name }}',
+                        description:  '{{ serviceConfig.description }}',
+                        conservation: '{{ serviceConfig.conservation }}',
+                        {% if serviceConfig.predefined is not null %}
+                            service: '{{ serviceConfig.predefined.name }}',
+                            options: {{ serviceConfig.predefined.options|default([])|json_encode|raw }},
+                        {% endif %}
+                        {% if serviceConfig.initialization_callback is not null %}
+                            initializationCallback: function() {
+                                {{ serviceConfig.initialization_callback|raw }}
+                            },
+                        {% endif %}
+                    },
+                {% endfor %}
+            },
+        }
+    );
+</script>
