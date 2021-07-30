@@ -1,0 +1,2 @@
+rich_id_cookies_regulation:
+    resource: '@RichIdCookiesRegulationBundle/Resources/routes.xml'

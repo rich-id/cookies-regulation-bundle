@@ -16,11 +16,16 @@
         "issues": "https://github.com/rich-id/cookies-regulation-bundle/issues"
     },
     "require": {
-        "php": ">=7.3",
-        "richcongress/bundle-toolbox": "^1.0"
+        "doctrine/orm": "^2.7",
+        "php": "^7.3 | ^8.0",
+        "richcongress/bundle-toolbox": "^1.0",
+        "symfony/framework-bundle": "^4.0 || ^5.0",
+        "symfony/routing": "^4.0 || ^5.0",
+        "twig/twig": "^2.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.5",
+        "doctrine/doctrine-migrations-bundle": "^3.1",
+        "phpunit/phpunit": "^9.5",
         "richcongress/static-analysis": "^0.1",
         "richcongress/test-suite": "^0.1",
         "roave/security-advisories": "dev-latest"

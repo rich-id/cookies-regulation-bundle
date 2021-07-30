@@ -1,0 +1,18 @@
+rich_id_cookies_regulation:
+    website: 'Test Website'
+    locale: 'fr'
+    privacy_policy:
+        url: 'http://privacy_policy'
+    modal:
+        header:  'Modal header'
+        related_companies_count: 2
+        related_companies_privacy_policy_url: 'http://related_companies_privacy_policy'
+    services:
+        google_tag_manager:
+            name: 'Google Tag Manager'
+            description: 'Tag management system'
+            conservation: '6 months.'
+            predefined:
+                name: 'googleTagManager'
+                options: { id: 'GTM-TEST' }
+
