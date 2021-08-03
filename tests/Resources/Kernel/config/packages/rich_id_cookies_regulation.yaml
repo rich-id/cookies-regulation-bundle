@@ -11,6 +11,7 @@ rich_id_cookies_regulation:
         google_tag_manager:
             name: 'Google Tag Manager'
             description: 'Tag management system'
+            mandatory: true
             conservation: '6 months'
             predefined:
                 name: 'googleTagManager'

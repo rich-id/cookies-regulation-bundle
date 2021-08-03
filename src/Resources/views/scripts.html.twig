@@ -33,6 +33,7 @@
                             name:         '{{ serviceConfig.name }}',
                             description:  '{{ serviceConfig.description }}',
                             conservation: '{{ serviceConfig.conservation }}',
+                            mandatory: {% if serviceConfig.mandatory %}true{% else %}false{% endif %},
                             {% if serviceConfig.predefined is not null %}
                                 service: '{{ serviceConfig.predefined.name }}',
                                 options: {{ serviceConfig.predefined.options|default([])|json_encode|raw }},

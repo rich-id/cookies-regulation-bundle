@@ -50,6 +50,7 @@ class ConfigurationTest extends TestCase
                         'enable'                  => true,
                         'name'                    => 'Google Tag Manager',
                         'description'             => 'Tag management system',
+                        'mandatory'               => true,
                         'conservation'            => '6 months',
                         'initialization_callback' => null,
                         'predefined'              => [
@@ -61,6 +62,7 @@ class ConfigurationTest extends TestCase
                         'enable'                  => false,
                         'name'                    => 'Another Service',
                         'description'             => 'Description of the another service',
+                        'mandatory'               => false,
                         'conservation'            => '1 year',
                         'initialization_callback' => 'init_callback()',
                     ],

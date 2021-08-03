@@ -31,6 +31,7 @@ class Configuration extends AbstractConfiguration
         $servicesNode->booleanNode('enable')->defaultTrue();
         $servicesNode->scalarNode('name')->isRequired();
         $servicesNode->scalarNode('description')->isRequired();
+        $servicesNode->booleanNode('mandatory')->defaultFalse();
         $servicesNode->scalarNode('conservation')->isRequired();
         $servicesNode->scalarNode('initialization_callback')->defaultNull();
 
