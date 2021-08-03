@@ -1,6 +1,6 @@
 # Changelog
 
-## Version 0.1.2
+## Version 0.1.1
 
 - Add enable option in the service configuration
 
