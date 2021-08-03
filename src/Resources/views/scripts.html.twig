@@ -10,40 +10,26 @@
         {
             website: '{{ config.website }}',
             locale: '{{ config.locale }}',
-            privacyPolicy: {
-                url: '{{ config.privacy_policy.url }}',
-                label: '{{ config.privacy_policy.label }}',
-                openInNewWindow: {{ config.privacy_policy.open_in_new_window ? 'true' : 'false' }},
-            },
-            modal: {
-                header: '{{ config.modal.header }}',
-                relatedCompaniesCount: {{ config.modal.related_companies_count }},
-                relatedCompaniesPrivacyPolicyUrl: '{{ config.modal.related_companies_privacy_policy_url }}',
-            },
+
+            {# Configuration the privacy policies #}
+            privacyPolicy: {% include '@RichIdCookiesRegulation/partials/_privacy_policy.html.twig' with {config: config.privacy_policy} %},
+
+            {# Configure the modal #}
+            modal: {% include '@RichIdCookiesRegulation/partials/_modal.html.twig' with {config: config.modal} %},
+
+            {# Logs each decisions #}
             decisionLogCallback: (decision) => {
                 const client = new XMLHttpRequest();
                 client.open('POST', '{{ url('post_cookies_regulation_decision_log') }}', true);
                 client.setRequestHeader('Content-type', 'application/json');
                 client.send(JSON.stringify(decision));
             },
+
+            {# List of loaded services #}
             services: {
                 {% for serviceName, serviceConfig in config.services %}
                     {% if serviceConfig.enable %}
-                        {{ serviceName }}: {
-                            name:         '{{ serviceConfig.name }}',
-                            description:  '{{ serviceConfig.description }}',
-                            conservation: '{{ serviceConfig.conservation }}',
-                            mandatory: {% if serviceConfig.mandatory %}true{% else %}false{% endif %},
-                            {% if serviceConfig.predefined is not null %}
-                                service: '{{ serviceConfig.predefined.name }}',
-                                options: {{ serviceConfig.predefined.options|default([])|json_encode|raw }},
-                            {% endif %}
-                            {% if serviceConfig.initialization_callback is not null %}
-                                initializationCallback: function() {
-                                    {{ serviceConfig.initialization_callback|raw }}
-                                },
-                            {% endif %}
-                        },
+                        {{ serviceName }}: {% include '@RichIdCookiesRegulation/partials/_services.html.twig' with {config: serviceConfig} %},
                     {% endif %}
                 {% endfor %}
             },

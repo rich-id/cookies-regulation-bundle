@@ -1,0 +1,12 @@
+{%- macro parse(urlConfig) -%}
+    {% if (urlConfig.absolute|default(null)) is not null %}
+        {{ urlConfig.absolute }}
+    {% else %}
+        {{ absolute_url(
+            path(
+                urlConfig.route,
+                urlConfig.parameters|default({})
+            )
+        ) }}
+    {% endif %}
+{%- endmacro -%}
