@@ -47,14 +47,22 @@ class ConfigurationTest extends TestCase
                 ],
                 'services' => [
                     'google_tag_manager' => [
+                        'enable'                  => true,
                         'name'                    => 'Google Tag Manager',
                         'description'             => 'Tag management system',
-                        'conservation'            => '6 months.',
+                        'conservation'            => '6 months',
                         'initialization_callback' => null,
                         'predefined'              => [
                             'name'    => 'googleTagManager',
                             'options' => ['id' => 'GTM-TEST'],
                         ],
+                    ],
+                    'another_service' => [
+                        'enable'                  => false,
+                        'name'                    => 'Another Service',
+                        'description'             => 'Description of the another service',
+                        'conservation'            => '1 year',
+                        'initialization_callback' => 'init_callback()',
                     ],
                 ],
             ],

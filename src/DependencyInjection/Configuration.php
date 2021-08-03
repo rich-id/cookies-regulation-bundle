@@ -28,6 +28,7 @@ class Configuration extends AbstractConfiguration
         $modalNode->scalarNode('related_companies_privacy_policy_url')->isRequired();
 
         $servicesNode = $nodeBuilder->arrayNode('services')->normalizeKeys(true)->arrayPrototype()->children();
+        $servicesNode->booleanNode('enable')->defaultTrue();
         $servicesNode->scalarNode('name')->isRequired();
         $servicesNode->scalarNode('description')->isRequired();
         $servicesNode->scalarNode('conservation')->isRequired();

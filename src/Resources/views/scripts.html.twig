@@ -28,20 +28,22 @@
             },
             services: {
                 {% for serviceName, serviceConfig in config.services %}
-                    {{ serviceName }}: {
-                        name:         '{{ serviceConfig.name }}',
-                        description:  '{{ serviceConfig.description }}',
-                        conservation: '{{ serviceConfig.conservation }}',
-                        {% if serviceConfig.predefined is not null %}
-                            service: '{{ serviceConfig.predefined.name }}',
-                            options: {{ serviceConfig.predefined.options|default([])|json_encode|raw }},
-                        {% endif %}
-                        {% if serviceConfig.initialization_callback is not null %}
-                            initializationCallback: function() {
-                                {{ serviceConfig.initialization_callback|raw }}
-                            },
-                        {% endif %}
-                    },
+                    {% if serviceConfig.enable %}
+                        {{ serviceName }}: {
+                            name:         '{{ serviceConfig.name }}',
+                            description:  '{{ serviceConfig.description }}',
+                            conservation: '{{ serviceConfig.conservation }}',
+                            {% if serviceConfig.predefined is not null %}
+                                service: '{{ serviceConfig.predefined.name }}',
+                                options: {{ serviceConfig.predefined.options|default([])|json_encode|raw }},
+                            {% endif %}
+                            {% if serviceConfig.initialization_callback is not null %}
+                                initializationCallback: function() {
+                                    {{ serviceConfig.initialization_callback|raw }}
+                                },
+                            {% endif %}
+                        },
+                    {% endif %}
                 {% endfor %}
             },
         }
