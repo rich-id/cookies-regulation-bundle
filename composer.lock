@@ -7185,16 +7185,16 @@
         },
         {
             "name": "richcongress/static-analysis",
-            "version": "v0.1.0",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rich-id/static-analysis.git",
-                "reference": "25efadca7d93c5c64c0ed1e31735bf45b8800268"
+                "reference": "ad043003f5418ab0661a7769e20f25c8aa471714"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rich-id/static-analysis/zipball/25efadca7d93c5c64c0ed1e31735bf45b8800268",
-                "reference": "25efadca7d93c5c64c0ed1e31735bf45b8800268",
+                "url": "https://api.github.com/repos/rich-id/static-analysis/zipball/ad043003f5418ab0661a7769e20f25c8aa471714",
+                "reference": "ad043003f5418ab0661a7769e20f25c8aa471714",
                 "shasum": ""
             },
             "require": {
@@ -7221,9 +7221,9 @@
             "description": "A library to setup quickly the static analysis tools for RichCongress",
             "support": {
                 "issues": "https://github.com/rich-id/static-analysis/issues",
-                "source": "https://github.com/rich-id/static-analysis/tree/v0.1.0"
+                "source": "https://github.com/rich-id/static-analysis/tree/v0.1.1"
             },
-            "time": "2021-06-23T09:33:28+00:00"
+            "time": "2021-08-04T12:58:00+00:00"
         },
         {
             "name": "richcongress/test-framework",
