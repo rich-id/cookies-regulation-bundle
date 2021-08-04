@@ -51,7 +51,7 @@ class Configuration extends AbstractConfiguration
     {
         $node->beforeNormalization()
             ->ifString()
-            ->then(function ($v) {
+            ->then(static function ($v) {
                 return ['absolute' => $v];
             });
 
