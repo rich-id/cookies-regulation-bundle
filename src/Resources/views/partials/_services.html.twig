@@ -5,11 +5,13 @@
     mandatory:    {% if config.mandatory %}true{% else %}false{% endif %},
 
     {# Cookies identifiers #}
-    cookiesIdentifiers: [
-        {% for identifier in config.cookies_identifiers %}
-            '{{ identifier|e('js') }}',
-        {% endfor %}
-    ],
+    {% if config.cookies_identifiers is not empty %}
+        cookiesIdentifiers: [
+            {% for identifier in config.cookies_identifiers %}
+                '{{ identifier|e('js') }}',
+            {% endfor %}
+        ],
+    {% endif %}
 
     {# Preconfigured service #}
     {% if (config.predefined|default(null)) is not null %}
