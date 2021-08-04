@@ -1,7 +1,7 @@
 {
     name:         '{{ config.name|trans|e('js') }}',
     description:  '{{ config.description|default('')|trans|e('js') }}',
-    conservation: '{{ config.conservation }}',
+    conservation: '{{ config.conservation|trans|e('js') }}',
     mandatory:    {% if config.mandatory %}true{% else %}false{% endif %},
 
     {# Cookies identifiers #}
