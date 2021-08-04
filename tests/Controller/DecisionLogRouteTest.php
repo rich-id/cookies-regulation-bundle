@@ -28,7 +28,7 @@ final class DecisionLogRouteTest extends ControllerTestCase
             ],
             'metadata' => [
                 'uuid' => '13336e1c-1c5c-4d24-8229-6eabb98f90bd',
-                'date' => '03/11/2020, 17:55:47',
+                'date' => '2020-11-03 17:55:47',
             ],
         ]);
 
@@ -58,7 +58,7 @@ final class DecisionLogRouteTest extends ControllerTestCase
             'preferences' => 'BadData',
             'metadata'    => [
                 'uuid' => '13336e1c-1c5c-4d24-8229-6eabb98f90bd',
-                'date' => '03/11/2020, 17:55:47',
+                'date' => '2020-11-03 17:55:47',
             ],
         ]);
 
@@ -73,7 +73,7 @@ final class DecisionLogRouteTest extends ControllerTestCase
             ],
             'metadata' => [
                 'uuid' => '13336e1c-1c5c-4d24-8229-6eabb98f90bd',
-                'date' => '03/11/2020, 17:55:47',
+                'date' => '2020-11-03 17:55:47',
             ],
         ]);
 
@@ -102,7 +102,7 @@ final class DecisionLogRouteTest extends ControllerTestCase
             ],
             'metadata' => [
                 'uuid' => false,
-                'date' => '03/11/2020, 17:55:47',
+                'date' => '2020-11-03 17:55:47',
             ],
         ]);
 
@@ -118,7 +118,7 @@ final class DecisionLogRouteTest extends ControllerTestCase
             ],
             'metadata' => [
                 'uuid' => '13336e1c-1c5c-4d24-8229-6eabb98f90bd',
-                'date' => false,
+                'date' => '1685463516584684',
             ],
         ]);
 

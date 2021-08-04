@@ -35,24 +35,28 @@ final class CookiesRegulationTwigExtensionTest extends TestCase
                 'website'            => 'Test Website',
                 'locale'             => 'fr',
                 'privacy_policy'     => [
-                    'url'                => 'http://privacy_policy',
+                    'url' => [
+                        'absolute' => 'http://privacy_policy',
+                    ],
                     'label'              => 'Privacy Policy',
                     'open_in_new_window' => true,
                 ],
                 'modal' => [
                     'header'                               => 'Modal header',
                     'related_companies_count'              => 2,
-                    'related_companies_privacy_policy_url' => 'http://related_companies_privacy_policy',
+                    'related_companies_privacy_policy_url' => [
+                        'absolute' => 'http://related_companies_privacy_policy',
+                    ],
                 ],
                 'services' => [
                     'google_tag_manager' => [
-                        'enable'                  => true,
-                        'name'                    => 'Google Tag Manager',
-                        'description'             => 'Tag management system',
-                        'mandatory'               => true,
-                        'conservation'            => '6 months',
-                        'initialization_callback' => null,
-                        'predefined'              => [
+                        'enable'              => true,
+                        'name'                => 'Google Tag Manager',
+                        'description'         => 'Tag management system',
+                        'mandatory'           => true,
+                        'conservation'        => '6 months',
+                        'cookies_identifiers' => [],
+                        'predefined'          => [
                             'name'    => 'googleTagManager',
                             'options' => ['id' => 'GTM-TEST'],
                         ],
@@ -63,6 +67,7 @@ final class CookiesRegulationTwigExtensionTest extends TestCase
                         'description'             => 'Description of the another service',
                         'mandatory'               => false,
                         'conservation'            => '1 year',
+                        'cookies_identifiers'     => [],
                         'initialization_callback' => 'init_callback()',
                     ],
                 ],

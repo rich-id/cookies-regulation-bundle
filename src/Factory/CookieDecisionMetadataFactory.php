@@ -30,7 +30,12 @@ class CookieDecisionMetadataFactory
         }
 
         $uuid = $metadata['uuid'] ?? null;
-        $date = new \DateTime($metadata['date'] ?? '');
+
+        try {
+            $date = new \DateTime($metadata['date'] ?? '');
+        } catch (\Throwable $e) {
+            return null;
+        }
 
         if (!\is_string($uuid) || empty($uuid) || !$date instanceof \DateTime) {
             return null;
