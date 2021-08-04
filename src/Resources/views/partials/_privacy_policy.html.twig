@@ -1,0 +1,7 @@
+{% import '@RichIdCookiesRegulation/partials/_url_config.html.twig' as urlMacro %}
+
+{
+    url: '{{ urlMacro.parse(config.url)|trim }}',
+    label: '{{ config.label|trans|e('js') }}',
+    openInNewWindow: {{ config.open_in_new_window ? 'true' : 'false' }},
+}

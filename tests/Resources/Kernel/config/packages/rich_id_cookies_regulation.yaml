@@ -11,8 +11,15 @@ rich_id_cookies_regulation:
         google_tag_manager:
             name: 'Google Tag Manager'
             description: 'Tag management system'
-            conservation: '6 months.'
+            mandatory: true
+            conservation: '6 months'
             predefined:
                 name: 'googleTagManager'
                 options: { id: 'GTM-TEST' }
+        another_service:
+            enable: false
+            name: 'Another Service'
+            description: 'Description of the another service'
+            conservation: '1 year'
+            initialization_callback: 'init_callback()'
 

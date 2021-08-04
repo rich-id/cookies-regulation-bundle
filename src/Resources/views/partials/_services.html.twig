@@ -1,0 +1,28 @@
+{
+    name:         '{{ config.name|trans|e('js') }}',
+    description:  '{{ config.description|default('')|trans|e('js') }}',
+    conservation: '{{ config.conservation|trans|e('js') }}',
+    mandatory:    {% if config.mandatory %}true{% else %}false{% endif %},
+
+    {# Cookies identifiers #}
+    {% if config.cookies_identifiers is not empty %}
+        cookiesIdentifiers: [
+            {% for identifier in config.cookies_identifiers %}
+                '{{ identifier|e('js') }}',
+            {% endfor %}
+        ],
+    {% endif %}
+
+    {# Preconfigured service #}
+    {% if (config.predefined|default(null)) is not null %}
+        service: '{{ config.predefined.name }}',
+        options: {{ config.predefined.options|default([])|json_encode|raw }},
+    {% endif %}
+
+    {# Initialization callback that starts the service if enabled #}
+    {% if (config.initialization_callback|default(null)) is not null %}
+        initializationCallback: function() {
+            {{ config.initialization_callback|raw }}
+        },
+    {% endif %}
+}
