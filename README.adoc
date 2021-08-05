@@ -11,10 +11,10 @@ ifndef::env-github[]
 image:.github/logo.svg[Logo, align=center]
 endif::[]
 
-image:https://img.shields.io/packagist/v/rich-id/cookies-regulation-bundle-bundle[link="https://packagist.org/packages/rich-id/cookies-regulation-bundle-bundle",window="_blank"]
+image:https://img.shields.io/packagist/v/rich-id/cookies-regulation-bundle[link="https://packagist.org/packages/rich-id/cookies-regulation-bundle",window="_blank"]
 image:https://github.com/rich-id/cookies-regulation-bundle/workflows/Tests/badge.svg[link="https://github.com/rich-id/cookies-regulation-bundle/actions",window="_blank"]
 image:https://coveralls.io/repos/github/rich-id/cookies-regulation-bundle/badge.svg?branch=master[link="https://coveralls.io/github/rich-id/cookies-regulation-bundle?branch=master",window="_blank"]
-image:https://api.codeclimate.com/v1/badges/cookies-regulation-bundle/maintainability[link="https://codeclimate.com/github/rich-id/cookies-regulation-bundle/maintainability",window="_blank"]
+image:https://api.codeclimate.com/v1/badges/829921eccb14db0b0948/maintainability[link="https://codeclimate.com/github/rich-id/cookies-regulation-bundle/maintainability",window="_blank"]
 image:https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat[link="https://github.com/richcongress/test-suite/issues",window="_blank"]
 image:https://img.shields.io/badge/license-MIT-blue.svg[link="LICENSE",window="_blank"]
 image:https://img.shields.io/badge/PHP-7.3%2B-yellow[]
@@ -53,7 +53,7 @@ composer require rich-id/cookies-regulation-bundle
 
 == 3. Versioning
 
-cookies-regulation-bundle-bundle follows link:https://semver.org/[semantic versioning^]. In short the scheme is MAJOR.MINOR.PATCH where
+cookies-regulation-bundle follows link:https://semver.org/[semantic versioning^]. In short the scheme is MAJOR.MINOR.PATCH where
 1. MAJOR is bumped when there is a breaking change,
 2. MINOR is bumped when a new feature is added in a backward-compatible way,
 3. PATCH is bumped when a bug is fixed in a backward-compatible way.

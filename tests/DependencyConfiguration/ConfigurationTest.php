@@ -44,20 +44,20 @@ class ConfigurationTest extends TestCase
                 ],
                 'modal' => [
                     'header'                               => 'Modal header',
-                    'related_companies_count'              => 2,
                     'related_companies_privacy_policy_url' => [
                         'absolute' => 'http://related_companies_privacy_policy',
                     ],
                 ],
                 'services' => [
                     'google_tag_manager' => [
-                        'enable'              => true,
-                        'name'                => 'Google Tag Manager',
-                        'description'         => 'Tag management system',
-                        'mandatory'           => true,
-                        'conservation'        => '6 months',
-                        'cookies_identifiers' => [],
-                        'predefined'          => [
+                        'enable'                  => true,
+                        'name'                    => 'Google Tag Manager',
+                        'description'             => 'Tag management system',
+                        'mandatory'               => true,
+                        'conservation'            => '6 months',
+                        'related_companies_count' => 1,
+                        'cookies_identifiers'     => [],
+                        'predefined'              => [
                             'name'    => 'googleTagManager',
                             'options' => ['id' => 'GTM-TEST'],
                         ],
@@ -69,6 +69,7 @@ class ConfigurationTest extends TestCase
                         'mandatory'               => false,
                         'conservation'            => '1 year',
                         'cookies_identifiers'     => [],
+                        'related_companies_count' => 2,
                         'initialization_callback' => 'init_callback()',
                     ],
                 ],

@@ -2,6 +2,6 @@
 
 {
     header: '{{ config.header|trans|e('js') }}',
-    relatedCompaniesCount: {{ config.related_companies_count }},
+    relatedCompaniesCount: {{ getCookiesRegulationRelatedCompaniesCount() }},
     relatedCompaniesPrivacyPolicyUrl: '{{ urlMacro.parse(config.related_companies_privacy_policy_url)|trim }}',
 }
