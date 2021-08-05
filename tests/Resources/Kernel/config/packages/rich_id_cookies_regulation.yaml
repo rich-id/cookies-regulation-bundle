@@ -5,7 +5,6 @@ rich_id_cookies_regulation:
         url: 'http://privacy_policy'
     modal:
         header:  'Modal header'
-        related_companies_count: 2
         related_companies_privacy_policy_url: 'http://related_companies_privacy_policy'
     services:
         google_tag_manager:
@@ -21,5 +20,6 @@ rich_id_cookies_regulation:
             name: 'Another Service'
             description: 'Description of the another service'
             conservation: '1 year'
+            related_companies_count: 2
             initialization_callback: 'init_callback()'
 

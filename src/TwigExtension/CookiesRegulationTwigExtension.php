@@ -24,6 +24,7 @@ class CookiesRegulationTwigExtension extends AbstractExtension
     {
         return [
             new TwigFunction('getCookiesRegulationConfig', [$this, 'getCookiesRegulationConfig']),
+            new TwigFunction('getCookiesRegulationRelatedCompaniesCount', [$this, 'getCookiesRegulationRelatedCompaniesCount']),
         ];
     }
 
@@ -34,5 +35,18 @@ class CookiesRegulationTwigExtension extends AbstractExtension
         $config = $this->parameterBag->get(Configuration::CONFIG_NODE);
 
         return $config;
+    }
+
+    public function getCookiesRegulationRelatedCompaniesCount(): int
+    {
+        $services = Configuration::get('services', $this->parameterBag);
+        $counts = \array_map(
+            static function (array $services): int {
+                return $services['enable'] ? $services['related_companies_count'] : 0;
+            },
+            $services
+        );
+
+        return \array_sum($counts);
     }
 }

@@ -28,7 +28,6 @@ class Configuration extends AbstractConfiguration
 
         $modalNode = $nodeBuilder->arrayNode('modal')->children();
         $modalNode->scalarNode('header')->isRequired();
-        $modalNode->integerNode('related_companies_count')->isRequired();
 
         $relatedCompaniesPrivacyPolicyUrlNode = $modalNode->arrayNode('related_companies_privacy_policy_url');
         self::addUrlOrRouteConfig($relatedCompaniesPrivacyPolicyUrlNode);
@@ -40,6 +39,7 @@ class Configuration extends AbstractConfiguration
         $servicesNode->booleanNode('mandatory')->defaultFalse();
         $servicesNode->scalarNode('conservation')->isRequired();
         $servicesNode->arrayNode('cookies_identifiers')->scalarPrototype();
+        $servicesNode->integerNode('related_companies_count')->defaultValue(1);
         $servicesNode->scalarNode('initialization_callback');
 
         $predefinedServiceNode = $servicesNode->arrayNode('predefined')->children();

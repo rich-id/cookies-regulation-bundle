@@ -43,20 +43,20 @@ final class CookiesRegulationTwigExtensionTest extends TestCase
                 ],
                 'modal' => [
                     'header'                               => 'Modal header',
-                    'related_companies_count'              => 2,
                     'related_companies_privacy_policy_url' => [
                         'absolute' => 'http://related_companies_privacy_policy',
                     ],
                 ],
                 'services' => [
                     'google_tag_manager' => [
-                        'enable'              => true,
-                        'name'                => 'Google Tag Manager',
-                        'description'         => 'Tag management system',
-                        'mandatory'           => true,
-                        'conservation'        => '6 months',
-                        'cookies_identifiers' => [],
-                        'predefined'          => [
+                        'enable'                  => true,
+                        'name'                    => 'Google Tag Manager',
+                        'description'             => 'Tag management system',
+                        'mandatory'               => true,
+                        'conservation'            => '6 months',
+                        'related_companies_count' => 1,
+                        'cookies_identifiers'     => [],
+                        'predefined'              => [
                             'name'    => 'googleTagManager',
                             'options' => ['id' => 'GTM-TEST'],
                         ],
@@ -67,6 +67,7 @@ final class CookiesRegulationTwigExtensionTest extends TestCase
                         'description'             => 'Description of the another service',
                         'mandatory'               => false,
                         'conservation'            => '1 year',
+                        'related_companies_count' => 2,
                         'cookies_identifiers'     => [],
                         'initialization_callback' => 'init_callback()',
                     ],
@@ -74,5 +75,14 @@ final class CookiesRegulationTwigExtensionTest extends TestCase
             ],
             $config
         );
+    }
+
+    public function testGetRelatedCompaniesCount(): void
+    {
+        /** @var CookiesRegulationTwigExtension $extension */
+        $extension = $this->getService(CookiesRegulationTwigExtension::class);
+        $result = $extension->getCookiesRegulationRelatedCompaniesCount();
+
+        self::assertSame(1, $result);
     }
 }
