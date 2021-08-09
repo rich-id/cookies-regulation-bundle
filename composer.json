@@ -21,7 +21,7 @@
         "richcongress/bundle-toolbox": "^1.2",
         "symfony/framework-bundle": "^4.0 || ^5.0",
         "symfony/routing": "^4.0 || ^5.0",
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0 || ^3.0"
     },
     "require-dev": {
         "doctrine/doctrine-migrations-bundle": "^3.1",
