@@ -57,6 +57,7 @@ class ConfigurationTest extends TestCase
                         'conservation'            => '6 months',
                         'related_companies_count' => 1,
                         'cookies_identifiers'     => [],
+                        'enabledByDefault'        => false,
                         'predefined'              => [
                             'name'    => 'googleTagManager',
                             'options' => ['id' => 'GTM-TEST'],
@@ -71,6 +72,7 @@ class ConfigurationTest extends TestCase
                         'cookies_identifiers'     => [],
                         'related_companies_count' => 2,
                         'initialization_callback' => 'init_callback()',
+                        'enabledByDefault'        => false,
                     ],
                 ],
             ],

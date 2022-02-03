@@ -56,6 +56,7 @@ final class CookiesRegulationTwigExtensionTest extends TestCase
                         'conservation'            => '6 months',
                         'related_companies_count' => 1,
                         'cookies_identifiers'     => [],
+                        'enabledByDefault'        => false,
                         'predefined'              => [
                             'name'    => 'googleTagManager',
                             'options' => ['id' => 'GTM-TEST'],
@@ -70,6 +71,7 @@ final class CookiesRegulationTwigExtensionTest extends TestCase
                         'related_companies_count' => 2,
                         'cookies_identifiers'     => [],
                         'initialization_callback' => 'init_callback()',
+                        'enabledByDefault'        => false,
                     ],
                 ],
             ],
