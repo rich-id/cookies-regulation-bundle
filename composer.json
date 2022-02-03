@@ -56,11 +56,11 @@
     "extra": {
         "hooks": {
             "pre-commit": [
-                "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix"
+                "docker-compose exec -T application ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix"
             ],
             "pre-push": [
-                "./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run",
-                "./vendor/richcongress/static-analysis/bin/static_analysis"
+                "docker-compose exec -T application ./vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --dry-run",
+                "docker-compose exec -T application ./vendor/richcongress/static-analysis/bin/static_analysis"
             ]
         }
     }

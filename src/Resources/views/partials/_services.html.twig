@@ -1,8 +1,9 @@
 {
-    name:         '{{ config.name|trans|e('js') }}',
-    description:  '{{ config.description|default('')|trans|e('js') }}',
-    conservation: '{{ config.conservation|trans|e('js') }}',
-    mandatory:    {% if config.mandatory %}true{% else %}false{% endif %},
+    name:             '{{ config.name|trans|e('js') }}',
+    description:      '{{ config.description|default('')|trans|e('js') }}',
+    conservation:     '{{ config.conservation|trans|e('js') }}',
+    mandatory:        {% if config.mandatory %}true{% else %}false{% endif %},
+    enabledByDefault: {% if config.enabledByDefault %}true{% else %}false{% endif %},
 
     {# Cookies identifiers #}
     {% if config.cookies_identifiers is not empty %}

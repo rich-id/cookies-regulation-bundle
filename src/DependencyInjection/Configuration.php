@@ -35,6 +35,7 @@ class Configuration extends AbstractConfiguration
         $servicesNode = $nodeBuilder->arrayNode('services')->normalizeKeys(true)->arrayPrototype()->children();
         $servicesNode->booleanNode('enable')->defaultTrue();
         $servicesNode->scalarNode('name')->isRequired();
+        $servicesNode->booleanNode('enabledByDefault')->defaultFalse();
         $servicesNode->scalarNode('description');
         $servicesNode->booleanNode('mandatory')->defaultFalse();
         $servicesNode->scalarNode('conservation')->isRequired();
