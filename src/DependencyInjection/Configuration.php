@@ -28,6 +28,7 @@ class Configuration extends AbstractConfiguration
 
         $modalNode = $nodeBuilder->arrayNode('modal')->children();
         $modalNode->scalarNode('header')->isRequired();
+        $modalNode->scalarNode('headerWithoutConsent')->isRequired();
 
         $relatedCompaniesPrivacyPolicyUrlNode = $modalNode->arrayNode('related_companies_privacy_policy_url');
         self::addUrlOrRouteConfig($relatedCompaniesPrivacyPolicyUrlNode);
