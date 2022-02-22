@@ -44,6 +44,7 @@ class ConfigurationTest extends TestCase
                 ],
                 'modal' => [
                     'header'                               => 'Modal header',
+                    'headerWithoutConsent'                 => 'Modal  headerWithoutConsent',
                     'related_companies_privacy_policy_url' => [
                         'absolute' => 'http://related_companies_privacy_policy',
                     ],
