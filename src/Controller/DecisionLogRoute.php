@@ -38,9 +38,9 @@ class DecisionLogRoute extends AbstractController
         $metadata = ($this->cookieDecisionMetadataFactory)();
         $decisions = ($this->cookieDecisionsFactory)();
 
-       /* if ($metadata === null || $decisions === null) {
+        if ($metadata === null || $decisions === null) {
             throw new BadRequestHttpException('Fail to parse the data.');
-        }*/
+        }
 
         foreach ($decisions as $decision) {
             $log = new DecisionLog();
