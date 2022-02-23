@@ -2,6 +2,7 @@
 
 {
     header: '{{ config.header|trans|e('js') }}',
+    headerWithoutConsent: '{{ config.headerWithoutConsent|trans|e('js') }}',
     relatedCompaniesCount: {{ getCookiesRegulationRelatedCompaniesCount() }},
     relatedCompaniesPrivacyPolicyUrl: '{{ urlMacro.parse(config.related_companies_privacy_policy_url)|trim }}',
 }

@@ -5,6 +5,7 @@ rich_id_cookies_regulation:
         url: 'http://privacy_policy'
     modal:
         header:  'Modal header'
+        headerWithoutConsent:  'Modal headerWithoutConsent'
         related_companies_privacy_policy_url: 'http://related_companies_privacy_policy'
     services:
         google_tag_manager:
