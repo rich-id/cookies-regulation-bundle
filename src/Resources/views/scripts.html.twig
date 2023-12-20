@@ -35,4 +35,32 @@
             },
         }
     );
+
+    var banner = document.getElementsByClassName('cookies-regulation-banner');
+    if ( banner.length == 1 ) {
+      var cookiesBanner = banner.item(0);
+      var selectors = ':not([tabindex="-1"]):not([disabled]):not([type=hidden])';
+      var focusableEls = cookiesBanner.querySelectorAll('a[href]' + selectors + ', button' + selectors + ', textarea' + selectors + ', input' + selectors + ', select' + selectors + ':not(.ts-hidden-accessible), *[tabindex]' + selectors + ', *[contenteditable]' + selectors + '');
+      var firstFocusableEl = focusableEls[0];
+      var lastFocusableEl = focusableEls[focusableEls.length - 1];
+      firstFocusableEl.focus();
+
+      cookiesBanner.addEventListener("keydown", (event) => {
+        if (!(event.key === 'Tab' || event.keyCode === 9)) {
+          return;
+        }
+
+        if ( event.shiftKey ) {
+          if (document.activeElement === firstFocusableEl) {
+            lastFocusableEl.focus({ focusVisible: true });
+            event.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastFocusableEl) {
+            firstFocusableEl.focus({ focusVisible: true });
+            event.preventDefault();
+          }
+        }
+      });
+    }
 </script>
