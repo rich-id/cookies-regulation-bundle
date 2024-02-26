@@ -4,14 +4,12 @@ declare(strict_types=1);
 
 namespace RichId\CookiesRegulationBundle\Tests\TwigExtension;
 
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\TestCase;
 use RichId\CookiesRegulationBundle\TwigExtension\CookiesRegulationTwigExtension;
 use Twig\TwigFunction;
 
-/**
- * @covers \RichId\CookiesRegulationBundle\TwigExtension\CookiesRegulationTwigExtension
- */
+/** @covers \RichId\CookiesRegulationBundle\TwigExtension\CookiesRegulationTwigExtension */
 #[TestConfig('container')]
 final class CookiesRegulationTwigExtensionTest extends TestCase
 {

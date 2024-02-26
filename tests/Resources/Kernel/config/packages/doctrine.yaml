@@ -8,35 +8,37 @@ doctrine:
                 path: '%kernel.cache_dir%/__DBNAME__.db'
                 url: null
                 memory: true
+                use_savepoints: true
             empty_database:
                 driver: pdo_sqlite
                 user: test
                 path: '%kernel.cache_dir%/__DBNAME___empty.db'
                 url: null
                 memory: true
+                use_savepoints: true
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         default_entity_manager: default
         entity_managers:
             default:
-                naming_strategy: doctrine.orm.naming_strategy.underscore
+                naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
                 auto_mapping: true
                 connection: default
                 mappings:
                     App:
                         is_bundle: false
-                        type: annotation
+                        type: attribute
                         dir: '%kernel.project_dir%/src/Entity'
                         prefix: 'RichId\CookiesRegulationBundle\Entity'
                         alias: App
             empty_database:
                 connection: empty_database
-                naming_strategy: doctrine.orm.naming_strategy.underscore
+                naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
                 auto_mapping: false
                 mappings:
                     App:
                         is_bundle: false
-                        type: annotation
+                        type: attribute
                         dir: '%kernel.project_dir%/src/Entity'
                         prefix: 'RichId\CookiesRegulationBundle\Entity'
                         alias: App

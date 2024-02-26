@@ -7,15 +7,20 @@ namespace RichId\CookiesRegulationBundle\Factory;
 use RichId\CookiesRegulationBundle\Model\CookieDecisionMetadata;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Serializer\Encoder\DecoderInterface;
 
 class CookieDecisionMetadataFactory
 {
     /** @var RequestStack */
     protected $requestStack;
 
-    public function __construct(RequestStack $requestStack)
+    /** @var DecoderInterface */
+    protected $decoder;
+
+    public function __construct(RequestStack $requestStack, DecoderInterface $decoder)
     {
         $this->requestStack = $requestStack;
+        $this->decoder = $decoder;
     }
 
     public function __invoke(): ?CookieDecisionMetadata
@@ -23,7 +28,7 @@ class CookieDecisionMetadataFactory
         /** @var Request $request */
         $request = $this->requestStack->getCurrentRequest();
         /** @var array<string, string> $metadata */
-        $metadata = $request->request->get('metadata');
+        $metadata = $this->decoder->decode($request->getContent(), 'json')['metadata'] ?? null;
 
         if (!\is_array($metadata)) {
             return null;

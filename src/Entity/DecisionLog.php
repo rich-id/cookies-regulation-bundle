@@ -6,48 +6,26 @@ namespace RichId\CookiesRegulationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="cookies_regulation_decision_log")
- */
+#[ORM\Entity]
+#[ORM\Table(name: 'cookies_regulation_decision_log')]
 class DecisionLog
 {
-    /**
-     * @var int|null
-     *
-     * @ORM\Id
-     * @ORM\Column(type="integer", options={"unsigned":true})
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    protected $id;
+    #[ORM\Id]
+    #[ORM\Column(type: 'integer', options: ['unsigned' => true])]
+    #[ORM\GeneratedValue(strategy: 'AUTO')]
+    protected ?int $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=50, nullable=false, name="uuid")
-     */
-    protected $uuid;
+    #[ORM\Column(type: 'string', length: 50, nullable: false, name: 'uuid')]
+    protected string $uuid;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=false, name="date")
-     */
-    protected $date;
+    #[ORM\Column(type: 'datetime', nullable: false, name: 'date')]
+    protected \DateTime $date;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=50, nullable=false, name="service_name")
-     */
-    protected $serviceName;
+    #[ORM\Column(type: 'string', length: 50, nullable: false, name: 'service_name')]
+    protected string $serviceName;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(type="boolean", nullable=false, name="is_enabled")
-     */
-    protected $isEnabled;
+    #[ORM\Column(type: 'boolean', nullable: false, name: 'is_enabled')]
+    protected bool $isEnabled;
 
     public function getId(): ?int
     {

@@ -7,15 +7,20 @@ namespace RichId\CookiesRegulationBundle\Factory;
 use RichId\CookiesRegulationBundle\Model\CookieDecision;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Serializer\Encoder\DecoderInterface;
 
 class CookieDecisionsFactory
 {
     /** @var RequestStack */
     protected $requestStack;
 
-    public function __construct(RequestStack $requestStack)
+    /** @var DecoderInterface */
+    protected $decoder;
+
+    public function __construct(RequestStack $requestStack, DecoderInterface $decoder)
     {
         $this->requestStack = $requestStack;
+        $this->decoder = $decoder;
     }
 
     /** @return CookieDecision[] */
@@ -24,7 +29,7 @@ class CookieDecisionsFactory
         /** @var Request $request */
         $request = $this->requestStack->getCurrentRequest();
         /** @var array<int, array<int, string|bool>> $decisions */
-        $decisions = $request->request->get('preferences');
+        $decisions = $this->decoder->decode($request->getContent(), 'json')['preferences'] ?? null;
         $models = [];
 
         if (!\is_array($decisions)) {

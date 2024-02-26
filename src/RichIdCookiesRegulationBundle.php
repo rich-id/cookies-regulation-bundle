@@ -9,7 +9,7 @@ use RichCongress\BundleToolbox\Configuration\AbstractBundle;
 class RichIdCookiesRegulationBundle extends AbstractBundle
 {
     /** @var array<string, string> */
-    protected static $doctrineAnnotationMapping = [
+    protected static $doctrineAttributeMapping = [
         'RichId\CookiesRegulationBundle\Entity' => __DIR__ . '/Entity',
     ];
 }

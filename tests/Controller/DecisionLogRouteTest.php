@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace RichId\CookiesRegulationBundle\Tests\Controller;
 
 use Doctrine\Persistence\ObjectRepository;
-use RichCongress\TestFramework\TestConfiguration\Annotation\TestConfig;
+use RichCongress\TestFramework\TestConfiguration\Attribute\TestConfig;
 use RichCongress\TestSuite\TestCase\ControllerTestCase;
 use RichId\CookiesRegulationBundle\Entity\DecisionLog;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,16 +21,18 @@ final class DecisionLogRouteTest extends ControllerTestCase
 {
     public function testDecisionLog(): void
     {
-        $response = $this->getClient()->post('/rest/cookies-regulation/log', [], [
-            'preferences' => [
-                ['google_tag_manager', true],
-                ['another_cookie', false],
-            ],
-            'metadata' => [
-                'uuid' => '13336e1c-1c5c-4d24-8229-6eabb98f90bd',
-                'date' => '2020-11-03 17:55:47',
-            ],
-        ]);
+        $response = $this->getClient()->post('/rest/cookies-regulation/log', [],
+            [
+                'preferences' => [
+                    ['google_tag_manager', true],
+                    ['another_cookie', false],
+                ],
+                'metadata' => [
+                    'uuid' => '13336e1c-1c5c-4d24-8229-6eabb98f90bd',
+                    'date' => '2020-11-03 17:55:47',
+                ],
+            ]
+        );
 
         self::assertStatusCode(Response::HTTP_NO_CONTENT, $response);
 
