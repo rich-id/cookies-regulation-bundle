@@ -8,16 +8,13 @@ doctrine:
                 path: '%kernel.cache_dir%/__DBNAME__.db'
                 url: null
                 memory: true
-                use_savepoints: true
             empty_database:
                 driver: pdo_sqlite
                 user: test
                 path: '%kernel.cache_dir%/__DBNAME___empty.db'
                 url: null
                 memory: true
-                use_savepoints: true
     orm:
-        auto_generate_proxy_classes: '%kernel.debug%'
         default_entity_manager: default
         entity_managers:
             default:
